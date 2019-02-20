@@ -1,0 +1,30 @@
+{
+  "name": "dclutter",
+  "version": "1.0.0",
+  "description": "A web application for users to find donation centers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "client": "npm run start --prefix client",
+    "seed": "node scripts/seedDB.js",
+    "dev": "concurrently \"npm run start\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klynne23/DClutter.git"
+  },
+  "author": "Kirthi Lynne, Amanda Petteruti, Rafael Treviño",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klynne23/DClutter/issues"
+  },
+  "homepage": "https://github.com/klynne23/DClutter#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.14",
+    "path": "^0.12.7"
+  }
+}
