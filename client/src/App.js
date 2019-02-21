@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import API from './utils/API';
 
 class App extends Component {
+
+componentDidMount() {
+  this.allCenters();
+};
+
+allCenters = () => {
+  API.getCenters()
+    .then(console.log("Yay"))
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err));
+};
+
+
   render() {
     return (
       <div className="App">

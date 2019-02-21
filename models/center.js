@@ -15,6 +15,6 @@ const centerSchema = new Schema({
     pickup: {type: Boolean, default: false}
 });
 
-const Center = mongoose.model('Center', centerSchema);
+const Center = mongoose.model("Center", centerSchema);
 
 module.exports = Center;
