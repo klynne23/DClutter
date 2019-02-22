@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import API from './utils/API';
+import {Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class App extends Component {
+
+state = {
+  lat: 38.8843,
+  lng: -77.1078,
+  zoom: 13
+}
 
 componentDidMount() {
   this.allCenters();
@@ -44,9 +51,10 @@ updateCenter =(id, centerData) => {
 };
 
   render() {
+    const position = [this.state.lat, this.state.lng];
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -59,7 +67,21 @@ updateCenter =(id, centerData) => {
           >
             Learn React
           </a>
-        </header>
+        </header> */}
+        <Map 
+  
+        center={position} zoom={this.state.zoom}>
+          <TileLayer 
+        
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+            />
+          <Marker position={position}>
+            <Popup>
+              {position} <br/> Easily customizable.
+            </Popup>
+          </Marker>
+        </Map>
       </div>
     );
   }
