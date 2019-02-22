@@ -1,20 +1,7 @@
 const db = require('../models');
 
 module.exports = {
-    findAll: function (req, res) {
-        db.Center
-            .find(req.query)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
-
-    findById: function (req, res) {
-        db.Center
-            .findById(req.params.id)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
-
+    // Create a new center
     create: function (req, res) {
         db.Center
             .create(req.body)
@@ -22,22 +9,36 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
 
-    update: function (req, res) {
+    // Return all centers
+    findAll: function (req, res) {
         db.Center
-            .findOneAndUpdate({
-                _id: req.params.id
-            }, req.body)
+            .find(req.query)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
 
-    remove: function (req, res) {
+    // Return centers that meet any of the search criteria
+    findByCategories: function (req, res) {
         db.Center
-            .findById({
-                _id: req.params.id
-            })
-            .then(dbModel => dbModel.remove())
+            .find({accepts: {$in: req.params.categories.split(",")}})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
-    }
+    },
+
+    // Return a single center by id
+    findById: function (req, res) {
+        db.Center
+            .find({_id: req.params.id})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+    },
+
+    // Update a center (for verification button)
+    update: function (req, res) {
+        console.log(req.body)
+        db.Center
+            .findOneAndUpdate({_id: req.params.id}, req.body)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
 };

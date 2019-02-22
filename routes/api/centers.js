@@ -6,11 +6,13 @@ router.route("/")
   .get(centerController.findAll)
   .post(centerController.create);
 
+// Should match with "/api/centers/categories"
+router.route("/categories/:categories")
+  .get(centerController.findByCategories);
+
 // Should match with "/api/centers/:id"
-router
-  .route("/:id")
+router.route("/id/:id")
   .get(centerController.findById)
   .put(centerController.update)
-  .delete(centerController.remove);
 
 module.exports = router;
