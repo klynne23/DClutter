@@ -5,11 +5,15 @@ import "./main.css";
 import { Col, Row, Container } from "../components/Grid";
 import API from '../utils/API';
 import Charity from "../components/Charity";
-import Geocode from '../utils/Geocode';
+// import Geocode from '../utils/Geocode';
+import {Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class Main extends Component {
 
     state = {
+        lat: 38.8843,
+        lng: -77.1078,
+        zoom: 13,
         categories: [],
         selections: [],
         noSelections: true,
@@ -42,6 +46,7 @@ class Main extends Component {
             .catch(err => console.log(err));
     };
 
+    
     // UPDATE ONCE CONNECTED TO DB
     // SHOULD CAPTURE THE DATA MAKE A GET REQUEST
     searchButtonClick() {
@@ -79,6 +84,7 @@ class Main extends Component {
     };
 
     render() {
+        const position = [this.state.lat, this.state.lng];
         return (
             <div className="main">
                 <Jumbotron >
@@ -170,6 +176,20 @@ class Main extends Component {
                 </div> {/* end resultsContainer */}
 
                 </div> {/** end searchContainer **/}
+                <Map 
+  
+                    center={position} zoom={this.state.zoom}>
+                    <TileLayer 
+  
+                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                         />
+                     <Marker position={position}>
+                    <Popup>
+                    {position} <br/> Easily customizable.
+                    </Popup>
+                    </Marker>
+                    </Map>
             </div> /* end main */
 
         ); // end return
