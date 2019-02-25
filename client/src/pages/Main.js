@@ -6,7 +6,9 @@ import { Col, Row, Container } from "../components/Grid";
 import API from '../utils/API';
 import Charity from "../components/Charity";
 // import Geocode from '../utils/Geocode';
-import {Map, TileLayer, Marker, Popup } from 'react-leaflet';
+
+//MAP
+import {Map, TileLayer, Marker, Popup } from 'react-leaflet'; //MAP
 
 class Main extends Component {
 
@@ -84,6 +86,7 @@ class Main extends Component {
     };
 
     render() {
+        //MAP
         const position = [this.state.lat, this.state.lng];
         return (
             <div className="main">
@@ -176,6 +179,7 @@ class Main extends Component {
                 </div> {/* end resultsContainer */}
 
                 </div> {/** end searchContainer **/}
+                {/* MAP */}
                 <Map 
   
                     center={position} zoom={this.state.zoom}>
@@ -189,7 +193,7 @@ class Main extends Component {
                     {position} <br/> Easily customizable.
                     </Popup>
                     </Marker>
-                    </Map>
+                    </Map> {/*end map */}
             </div> /* end main */
 
         ); // end return

@@ -47,7 +47,6 @@ updateCenter =(id, centerData) => {
       <div className="App">
        
 
-
       <Router>
         <div>
           <Wrapper>
