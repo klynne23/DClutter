@@ -1,0 +1,21 @@
+
+
+.categorySpan {
+    /* width: 30%; */
+    padding: 1%;
+    display: inline;
+    margin: 3%;
+}
+
+span {
+    margin-left: 1%;
+}
+
+.pickedCategoryButton {
+    display: inline;
+    margin: 1%;
+}
+
+span.btn-danger {
+    margin-left: 0%;
+}
