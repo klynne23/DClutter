@@ -1,0 +1,32 @@
+.text-left   {
+    color: white;
+}
+
+#charityHR {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, #ffffff00, #ffffff00, #ffffff56, #640D14, #ffffff56, #ffffff00, #ffffff00);
+    overflow: visible; /* For IE */
+    padding: 0;
+    /* border: none; */
+    /* border-top: medium double #640D14; */
+    color: #dbc2c4;
+    text-align: center;
+}
+
+#charityHR:after {
+    /* content: "❀"; */
+    content: "✧";
+    display: inline-block;
+    position: relative;
+    top: -.8em;
+    font-size: 1em;
+    padding: 0 0.25em;
+    /* background: white; */
+}
+
+.resultCharity {
+    
+    border-left: 5px double white;
+    padding-left: 20px;
+}

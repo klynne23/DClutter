@@ -9,7 +9,6 @@ export default {
         return axios.get('/api/centers/');
     },
 
-    // Return centers that meet query criteria
     findByCategories: function(categories) {
         return axios.get('/api/centers/categories/' + categories);
     },

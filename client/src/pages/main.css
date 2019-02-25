@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker|Questrial');
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+
+.display-1 #D {
+    font-family: "Permanent Marker";
+    font-size:  160px;
+    text-shadow: 8px 8px 5px #1D3B58;
+}
+
+.display-1 #C {
+    font-family: "Amatic SC";
+    font-size:  150px;
+    text-shadow: 7px 7px 5px #1D3B58;
+}
+
+
+.display-1 #lutter {
+    font-family: "Amatic SC";
+    text-shadow: 7px 7px 5px #1D3B58;
+}
+.col-md-12 h2 {
+    color: white;
+    text-shadow: 7px 7px 5px #1D3B58;
+    font-size: 4em;
+    font-family: "Staatliches";
+    text-align: center;
+
+}
+
+
+.searchButton {
+    margin-bottom: 2%;
+    margin-top: 2%;
+    width: 100px;
+}
+
+.addCharity, .viewResults {
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.searchSelectionDiv {
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 15px;
+    padding: 2%;
+    background-color: #e4dbd6;
+    box-shadow: 12px 12px 2px 1px #000000; 
+    margin-bottom: 32px;
+    
+}
+
+.chosenCategories {
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 15px;
+    padding: 2%;
+    background-color: #e4dbd6;
+    box-shadow: 12px 12px 2px 1px #000000; 
+    margin-bottom: 32px;
+    margin-top: 0px;
+}
+
+.chosenCategories button {
+    margin: 1%;
+}
+
+
+.categoryButton {
+    width: 40%;
+    margin:.3%;
+    font-size: 1em;
+    /* display: inline; */
+}
+
+.aButton {
+    /* display: inline; */
+    margin-bottom: 3%;
+}
+
+.pickedCategoryButton {
+    /* width: 40%; */
+    font-size: 1em;
+    
+}
+
+.deleteX {
+    margin-left: 3%;
+    color: red;
+    cursor: pointer;
+}
+
+.formDiv {
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 15px;
+    padding: 2%;
+    background-color: rgba(253, 255, 252, 0.76);
+    box-shadow: 12px 12px 2px 1px #000000; 
+    margin-bottom: 32px;
+    margin-top: 0px;
+}
+
+.addCharityHeader {
+    margin-bottom: 2%;
+}
+
+h2.searchResultsHeader {
+    color: white;
+    text-shadow: 7px 7px 5px #1D3B58;
+    font-size: 4em;
+    font-family: "Staatliches";
+    text-align: center;
+}
+
+
+svg {
+    color: white;
+}
+
+#addCharityNav {
+    transition: .4s;
+    color: white;
+    padding: 1%;
+
+    background-color: #120A1E;
+    border: 5px solid #210B18;
+    border-radius: 49px;
+
+
+}
+
+#addCharityNav:hover {
+    color: rgba(255, 255, 255, 0.164);
+    border: 5px solid rgb(255, 255, 255);
+    background-color:  #210B18;
+    border-radius: 49px;
+
+}
+
+#addCharityNav:hover a {
+    color: rgb(255, 255, 255);
+
+}
+
+
+a {
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 4px white;
+    transition: .4s;
+
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+}
+
+.icon {
+    /* display:inline-block; */
+    fill: currentColor;
+    margin: 1%;
+    margin-bottom: 1.5%;
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+
+#divide {
+    color: white;
+    font-size: 1em;
+}
+
+#mainHR {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, #120A1E00, #120A1E00, #120A1E56, #ffffff, #120A1E56, #120A1E00, #120A1E00);
+    overflow: visible; /* For IE */
+    padding: 0;
+    /* border: none; */
+    /* border-top: medium double #640D14; */
+    text-align: center;
+}
+
+#mainHR:after {
+    /* content: "❀"; */
+    /* content: "✧"; */
+    display: inline-block;
+    position: relative;
+    top: -.8em;
+    font-size: 1em;
+    padding: 0 0.25em;
+    /* background: white; */
+}
