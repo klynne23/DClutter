@@ -9,24 +9,31 @@ import Charity from "../components/Charity";
 class Main extends Component {
 
     state = {
-        categories: ["Animal Feed", "Antiques", "Appliances (Large)", "Appliances (Small)", "Art", "Art Supplies", "Baby Items", "Bicycles", "Books", "Calling Cards", "Cleaning Supplies", "Clothing", "Computer Equipment", "Construction Material", "Electronics", "Food", "Food (Non-perishable)", "Furniture", "Gift Cards", "Hand Tools", "Hotel Samples", "Household Goods", "KitchenWare", "Mattresses", "Musical Instruments", "Office Supplies", "Pet Supplies", "School Supplies", "Sewing Machines", "Storage Bins/Containers", "Toiletries", "Tools", "Toys", "Vehicles", "Warehouse Space"],
+        categories: [],
         selections: [],
         noSelections: true,
         queryResponse: []
-    }
+    };
 
-    // when component mounts, sort the state
+    getCategories = () => {
+        API.getCenters()
+            .then(res => {
+                let allCategories = res.data.reduce(function(acc, element) {
+                    return acc.concat(element.accepts)
+                }, []);
+                let uniqueCategories = [...new Set(allCategories)];
+                let sortedCategories = uniqueCategories.sort();
+                this.setState({categories: sortedCategories})
+            })
+            .catch(err => console.log(err))
+    };
+
     componentDidMount() {
-        // sort the categories and then set the state..
-        // console.log(this.state.categories);
-        // var sorted = this.state.categories.sort();
-        // this.setState({ categories: sorted });
-        // console.log(this.state.categories);
+        this.getCategories();
     };
 
     // Input search criteria as an array: this.findByCategories(["clothing", "toys"])
     findByCategories = categories => {
-        console.log(categories)
         API.findByCategories(categories)
             .then(res => {
                 this.setState({queryResponse: res.data})
@@ -41,8 +48,6 @@ class Main extends Component {
         var lowercase = currentState.map((category)=> category.toLowerCase());
         this.findByCategories(lowercase);
     };
-
-
 
     // ARROW FUNCTIONS FIX THE 'THIS' SCOPE ISSUE
     categoryButtonClick = (e) => {
@@ -60,12 +65,10 @@ class Main extends Component {
 
     };
 
-
     clearSelections() {
         // SET SELECTIONS STATE EQUAL TO AN EMPTY ARRAY
         this.setState({ selections: [] });
     };
-
 
     removeCategory = category => {
         // FITLER THE CURRENT SELECTIONS FOR THE DELETED CATEGORY AND SET STATE EQUAL TO THE RETURNED ARRAY
@@ -73,8 +76,6 @@ class Main extends Component {
 
         this.setState({ selections: categories });
     };
-
-
 
     render() {
         return (
@@ -173,6 +174,5 @@ class Main extends Component {
         ); // end return
     } // end render
 } // end Main
-
 
 export default Main;
