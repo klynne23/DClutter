@@ -5,6 +5,7 @@ import "./main.css";
 import { Col, Row, Container } from "../components/Grid";
 import API from '../utils/API';
 import Charity from "../components/Charity";
+import Geocode from '../utils/Geocode';
 
 class Main extends Component {
 
