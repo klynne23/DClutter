@@ -3,38 +3,46 @@ import Jumbotron from "../components/Jumbotron";
 import "./main.css";
 // import Categories from "../components/Categories";
 import { Col, Row, Container } from "../components/Grid";
-
-
+import API from '../utils/API';
+import Charity from "../components/Charity";
 
 class Main extends Component {
 
     state = {
         categories: ["Animal Feed", "Antiques", "Appliances (Large)", "Appliances (Small)", "Art", "Art Supplies", "Baby Items", "Bicycles", "Books", "Calling Cards", "Cleaning Supplies", "Clothing", "Computer Equipment", "Construction Material", "Electronics", "Food", "Food (Non-perishable)", "Furniture", "Gift Cards", "Hand Tools", "Hotel Samples", "Household Goods", "KitchenWare", "Mattresses", "Musical Instruments", "Office Supplies", "Pet Supplies", "School Supplies", "Sewing Machines", "Storage Bins/Containers", "Toiletries", "Tools", "Toys", "Vehicles", "Warehouse Space"],
         selections: [],
-        noSelections: true
+        noSelections: true,
+        queryResponse: []
     }
 
     // when component mounts, sort the state
     componentDidMount() {
-        // sort the categories and then set the state.. 
+        // sort the categories and then set the state..
         // console.log(this.state.categories);
         // var sorted = this.state.categories.sort();
         // this.setState({ categories: sorted });
         // console.log(this.state.categories);
     };
 
+    // Input search criteria as an array: this.findByCategories(["clothing", "toys"])
+    findByCategories = categories => {
+        console.log(categories)
+        API.findByCategories(categories)
+            .then(res => {
+                this.setState({queryResponse: res.data})
+            })
+            .catch(err => console.log(err));
+    };
 
     // UPDATE ONCE CONNECTED TO DB
     // SHOULD CAPTURE THE DATA MAKE A GET REQUEST
     searchButtonClick() {
-
-        // prints out the current array of user selections
-        // search button
         var currentState = this.state.selections;
-        console.log(currentState);
-
-
+        var lowercase = currentState.map((category)=> category.toLowerCase());
+        this.findByCategories(lowercase);
     };
+
+
 
     // ARROW FUNCTIONS FIX THE 'THIS' SCOPE ISSUE
     categoryButtonClick = (e) => {
@@ -78,8 +86,8 @@ class Main extends Component {
                     <p className="navLinks ">
                      <span id="addCharityNav">
                     <a href="/">
-                    <svg viewBox="0 0 32 32" class="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z"/></svg>                   
-                     </a> 
+                    <svg viewBox="0 0 32 32" class="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z"/></svg>
+                     </a>
                      </span>
                      <span id="divide">|</span>
                      <span id="addCharityNav"><a href="/add"> Add Charity</a> </span></p>
@@ -146,7 +154,18 @@ class Main extends Component {
                     </Container>
 
 
-
+                    <div className="resultsContainer">
+                    <Container>
+                        <h2 className="searchResultsHeader">Your Search Results</h2>
+                        {this.state.queryResponse.map((charity)=>
+                            <div className="row text-left" >
+                                <Charity
+                                data={charity}
+                                />
+                            </div>
+                            )}
+                    </Container>
+                </div> {/* end resultsContainer */}
 
 
 
