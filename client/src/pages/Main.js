@@ -167,18 +167,6 @@ class Main extends Component {
                     </Container>
                 </div> {/* end resultsContainer */}
 
-
-
-
-                    <div className="doTheSearch">
-                        <div className="container text-center">
-
-                            <br></br>
-                            <a href="/results" className="btn btn-primary viewResults" role="button">View Results</a>
-
-                        </div>
-                    </div>
-
                 </div> {/** end searchContainer **/}
             </div> /* end main */
 

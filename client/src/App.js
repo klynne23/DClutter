@@ -14,22 +14,8 @@ componentDidMount() {
   this.allCenters();
 };
 
-// Input new center data as an object: this.addCenter({name: "Test Add", info: "This is a test"})
-addCenter = centerData => {
-  API.saveCenter(centerData)
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err));
-};
-
 allCenters = () => {
   API.getCenters()
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err));
-};
-
-// Input search criteria as an array: this.findByCategories(["clothing", "toys"])
-findByCategories = categories => {
-  API.findByCategories(categories)
     .then(res => console.log(res.data))
     .catch(err => console.log(err));
 };
