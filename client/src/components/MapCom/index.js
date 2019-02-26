@@ -15,7 +15,7 @@ function MapCom(props) {
     />
     <Marker position={position}>
         <Popup>
-            {position} <br /> {props.data.name}
+          <strong>{props.data.name}</strong> <br/> {props.data.location}
         </Popup>
     </Marker>
 </Map> /*end map */
