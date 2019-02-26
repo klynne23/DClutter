@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import "./main.css";
 import API from '../utils/API';
+import Geocode from '../utils/Geocode';
 
 class Charities extends Component {
     state = {
@@ -49,6 +50,13 @@ class Charities extends Component {
                 verified: false
             };
 
+            Geocode.getLatLong()
+                .then(res => {
+                    centerData.lat = res.data.results[0].geometry.location.lat;
+                    centerData.lng = res.data.results[0].geometry.location.lng
+                })
+                .catch(err => console.log(err));
+
             this.addCenter(centerData);
 
             this.setState({
@@ -68,18 +76,16 @@ class Charities extends Component {
     render() {
         return (
             <div>
-
                 <Jumbotron >
                     <h1 className="display-1" style={{ color: "white" }}><span id="D">D</span><span id="C">C</span><span id="lutter">lutter</span></h1>
                     <p className="lead" style={{ color: "white" }}>Get rid of things that dont bring you joy and fulfilment</p>
                     <hr id="mainHR"></hr>
                     <p className="navLinks "> <span id="addCharityNav"><a href="/">
-                    <svg viewBox="0 0 32 32" class="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z"/></svg>
+                    <svg viewBox="0 0 32 32" className="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z"/></svg>
                      </a>
                      </span>
                      {/* <span id="divide">|</span><span id="addCharityNav"><a href="/add"> Add Charity</a> </span> */}
                      </p>
-
                 </Jumbotron>
 
                 <Container>
@@ -89,7 +95,6 @@ class Charities extends Component {
                             </Col>
                         </Row>
                     <Row>
-
                         <Col size="col-md-1"></Col>
                         <Col size="col-md-10 formDiv">
                             <form>
@@ -171,9 +176,7 @@ class Charities extends Component {
                                 >
                                     Submit Charity
                             </FormBtn>
-
                             </form>
-
                         </Col>
                         <Col size="col-md-1"></Col>
 
@@ -183,12 +186,10 @@ class Charities extends Component {
                         <a href="/results" className="btn btn-primary" role="button">View Results</a>
 
                     </div>
-
                 </Container>
             </div>
         )
-
     }
-}
+};
 
 export default Charities;
