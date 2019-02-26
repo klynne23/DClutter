@@ -59,7 +59,7 @@ function Charity(props) {
     return (
            
             <Col size="col-md-12" className="text-left">
-            <hr id="charityHR"></hr>
+            {/* <hr id="charityHR"></hr> */}
                 <div className="resultCharity">
 
                     <h1 style={{ textDecorationLine: "underline" }}>{props.data.name}</h1>

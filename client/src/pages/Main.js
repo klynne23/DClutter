@@ -7,14 +7,11 @@ import API from '../utils/API';
 import Charity from "../components/Charity";
 // import Geocode from '../utils/Geocode';
 
-//MAP
-import {Map, TileLayer, Marker, Popup } from 'react-leaflet'; //MAP
+import MapCom from "../components/MapCom";
 
 class Main extends Component {
 
     state = {
-        lat: 38.8843,
-        lng: -77.1078,
         zoom: 13,
         categories: [],
         selections: [],
@@ -25,12 +22,12 @@ class Main extends Component {
     getCategories = () => {
         API.getCenters()
             .then(res => {
-                let allCategories = res.data.reduce(function(acc, element) {
+                let allCategories = res.data.reduce(function (acc, element) {
                     return acc.concat(element.accepts)
                 }, []);
                 let uniqueCategories = [...new Set(allCategories)];
                 let sortedCategories = uniqueCategories.sort();
-                this.setState({categories: sortedCategories})
+                this.setState({ categories: sortedCategories })
             })
             .catch(err => console.log(err))
     };
@@ -43,18 +40,20 @@ class Main extends Component {
     findByCategories = categories => {
         API.findByCategories(categories)
             .then(res => {
-                this.setState({queryResponse: res.data})
+                this.setState({ queryResponse: res.data })
             })
             .catch(err => console.log(err));
     };
 
-    
+
     // UPDATE ONCE CONNECTED TO DB
     // SHOULD CAPTURE THE DATA MAKE A GET REQUEST
-    searchButtonClick() {
-        var currentState = this.state.selections;
-        var lowercase = currentState.map((category)=> category.toLowerCase());
-        this.findByCategories(lowercase);
+    searchButtonClick = () => {
+        if (!(this.state.noSelections)) {
+            var currentState = this.state.selections;
+            var lowercase = currentState.map((category) => category.toLowerCase());
+            this.findByCategories(lowercase);
+        }
     };
 
     // ARROW FUNCTIONS FIX THE 'THIS' SCOPE ISSUE
@@ -86,8 +85,7 @@ class Main extends Component {
     };
 
     render() {
-        //MAP
-        const position = [this.state.lat, this.state.lng];
+
         return (
             <div className="main">
                 <Jumbotron >
@@ -95,13 +93,13 @@ class Main extends Component {
                     <p className="lead" style={{ color: "white" }}>Get rid of things that dont bring you joy and fulfilment</p>
                     <hr id="mainHR"></hr>
                     <p className="navLinks ">
-                     <span id="addCharityNav">
-                    <a href="/">
-                    <svg viewBox="0 0 32 32" class="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z"/></svg>
-                     </a>
-                     </span>
-                     <span id="divide">|</span>
-                     <span id="addCharityNav"><a href="/add"> Add Charity</a> </span></p>
+                        <span id="addCharityNav">
+                            <a href="/">
+                                <svg viewBox="0 0 32 32" class="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z" /></svg>
+                            </a>
+                        </span>
+                        <span id="divide">|</span>
+                        <span id="addCharityNav"><a href="/add"> Add Charity</a> </span></p>
 
                 </Jumbotron>
 
@@ -111,7 +109,6 @@ class Main extends Component {
                             <Col size="col-md-9">
                                 <Container>
                                     <Row>
-                                        {/* <Col size="col-md-3"></Col> */}
                                         <Col size="col-md-12">
                                             <h2 id="categorySelect">SELECT CATEGORIES</h2>
                                             <div className="searchSelectionDiv">
@@ -122,7 +119,6 @@ class Main extends Component {
 
                                             </div>{/* end searchSelectionDiv */}
                                         </Col>
-                                        {/* <Col size="col-md-3"></Col> */}
                                     </Row>
                                 </Container>
 
@@ -130,7 +126,6 @@ class Main extends Component {
                             <Col size="col-md-3 text-center">
                                 <Container>
                                     <Row>
-                                        {/* <Col size="col-md-3"></Col> */}
                                         <Col size="col-md-12 ">
                                             <h2 id="categorySelected">SELECTIONS</h2>
 
@@ -156,7 +151,6 @@ class Main extends Component {
                                             </div> {/* chosenCategories */}
 
                                         </Col>
-                                        {/* <Col size="col-md-3"></Col> */}
                                     </Row>
                                 </Container>
 
@@ -166,34 +160,39 @@ class Main extends Component {
 
 
                     <div className="resultsContainer">
-                    <Container>
-                        <h2 className="searchResultsHeader">Your Search Results</h2>
-                        {this.state.queryResponse.map((charity)=>
-                            <div className="row text-left" >
-                                <Charity
-                                data={charity}
-                                />
-                            </div>
+                        <Container>
+                            <h2 className="searchResultsHeader">Your Search Results</h2>
+                            {this.state.queryResponse.map((charity) =>
+                                <div className="row text-left" >
+
+                                    <Col size="col-md-12">
+                                        <hr id="charityHR"></hr>
+                                    </Col>
+                      
+                                    <Col size="col-md-8">
+                                        <Charity
+                                            data={charity}
+                                        />
+                                    </Col>
+                                    <Col size="col-md-4">
+                                        <Row>
+                                            <MapCom
+                                                zoom={this.state.zoom}
+                                                data={charity}
+                                            />
+                                        </Row>
+
+
+
+                                    </Col>
+                                </div>
                             )}
-                    </Container>
-                </div> {/* end resultsContainer */}
+                            <hr id="charityHR"></hr>
+
+                        </Container>
+                    </div> {/* end resultsContainer */}
 
                 </div> {/** end searchContainer **/}
-                {/* MAP */}
-                <Map 
-  
-                    center={position} zoom={this.state.zoom}>
-                    <TileLayer 
-  
-                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                         />
-                     <Marker position={position}>
-                    <Popup>
-                    {position} <br/> Easily customizable.
-                    </Popup>
-                    </Marker>
-                    </Map> {/*end map */}
             </div> /* end main */
 
         ); // end return
