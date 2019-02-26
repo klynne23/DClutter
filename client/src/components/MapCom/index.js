@@ -8,13 +8,12 @@ function MapCom(props) {
     <Map
       center={position} zoom={props.zoom}>
       <TileLayer
-
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
       />
       <Marker position={position}>
           <Popup>
-              {position} <br /> {props.data.name}
+            <strong>{props.data.name}</strong> <br/> {props.data.location}
           </Popup>
       </Marker>
     </Map> /*end map */
