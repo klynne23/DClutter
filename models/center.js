@@ -12,7 +12,10 @@ const centerSchema = new Schema({
     website: {type: String},
     details: {type: String},
     info: {type: String},
-    pickup: {type: Boolean, default: false}
+    pickup: {type: Boolean, default: false},
+    verified: {type: Boolean, default: false},
+    lat: {type: Number},
+    lng: {type: Number}
 });
 
 const Center = mongoose.model("Center", centerSchema);

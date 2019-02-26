@@ -123,8 +123,6 @@ svg {
     background-color: #120A1E;
     border: 5px solid #210B18;
     border-radius: 49px;
-
-
 }
 
 #addCharityNav:hover {
@@ -132,12 +130,10 @@ svg {
     border: 5px solid rgb(255, 255, 255);
     background-color:  #210B18;
     border-radius: 49px;
-
 }
 
 #addCharityNav:hover a {
     color: rgb(255, 255, 255);
-
 }
 
 
@@ -145,7 +141,6 @@ a {
     color: rgb(255, 255, 255);
     text-shadow: 0px 0px 4px white;
     transition: .4s;
-
 }
 
 a:link {
@@ -165,7 +160,7 @@ a:hover {
     height: 2em;
     vertical-align: middle;
     overflow: hidden;
-  }
+}
 
 #divide {
     color: white;
@@ -178,14 +173,12 @@ a:hover {
     background-image: linear-gradient(to right, #120A1E00, #120A1E00, #120A1E56, #ffffff, #120A1E56, #120A1E00, #120A1E00);
     overflow: visible; /* For IE */
     padding: 0;
-    /* border: none; */
-    /* border-top: medium double #640D14; */
     text-align: center;
 }
 
 #mainHR:after {
     /* content: "❀"; */
-    /* content: "✧"; */
+    content: "✧";
     display: inline-block;
     position: relative;
     top: -.8em;

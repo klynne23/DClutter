@@ -39,9 +39,3 @@
   padding: 0;
 }
 
-.leaflet-container.leaflet-touch.leaflet-retina.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
-  width: 90%;
-  height: 90%;
-  top: 30px;
-  position: relative;
-}

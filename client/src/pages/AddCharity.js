@@ -11,12 +11,14 @@ class Charities extends Component {
         name: "",
         location: "",
         phone: "",
-        accepts: "",
+        accepts: [],
         doesnotaccept: "",
         website: "",
         email: "",
         details: "",
         info: "",
+        lat: 0,
+        lng: 0
 
     } // end state
 
@@ -29,47 +31,60 @@ class Charities extends Component {
 
     addCenter = centerData => {
         API.saveCenter(centerData)
-          .then(res => console.log("Center data received. Thank you!"))
-          .catch(err => console.log(err));
+            .then(res => console.log("Center data received. Thank you!"))
+            .catch(err => console.log(err));
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
 
         if (this.state.name && this.state.phone && this.state.location && this.state.accepts) {
-            let centerData = {
-                name: this.state.name,
-                location: this.state.location,
-                phone: this.state.phone,
-                accepts: this.state.accepts,
-                doesnotaccept: this.state.doesnotaccept,
-                website: this.state.website,
-                email: this.state.email,
-                details: this.state.details,
-                info: this.state.info,
-                verified: false
-            };
 
-            Geocode.getLatLong()
+            Geocode.getLatLong(this.state.location)
                 .then(res => {
-                    centerData.lat = res.data.results[0].geometry.location.lat;
-                    centerData.lng = res.data.results[0].geometry.location.lng
+                
+                    console.log(res.data.results);
+                    this.setState({
+                        lat: res.data.results[0].geometry.location.lat,
+                        lng: res.data.results[0].geometry.location.lng
+                    })
+                })
+                .then(()=>{
+                    let centerData = {
+                        name: this.state.name,
+                        location: this.state.location,
+                        phone: this.state.phone,
+                        accepts: this.state.accepts.split(", "),
+                        doesnotaccept: this.state.doesnotaccept,
+                        website: this.state.website,
+                        email: this.state.email,
+                        details: this.state.details,
+                        info: this.state.info,
+                        lat: this.state.lat,
+                        lng: this.state.lng
+                    };
+                    
+                    console.log(centerData);
+                    
+                    this.addCenter(centerData);
+                    
+                })
+                .then(()=>{
+
+                    this.setState({
+                        name: "",
+                        location: "",
+                        phone: "",
+                        accepts: "",
+                        doesnotaccept: "",
+                        website: "",
+                        email: "",
+                        details: "",
+                        info: "",
+                    });
                 })
                 .catch(err => console.log(err));
 
-            this.addCenter(centerData);
-
-            this.setState({
-                name: "",
-                location: "",
-                phone: "",
-                accepts: "",
-                doesnotaccept: "",
-                website: "",
-                email: "",
-                details: "",
-                info: "",
-            });
         }
     };
 
@@ -81,19 +96,19 @@ class Charities extends Component {
                     <p className="lead" style={{ color: "white" }}>Get rid of things that dont bring you joy and fulfilment</p>
                     <hr id="mainHR"></hr>
                     <p className="navLinks "> <span id="addCharityNav"><a href="/">
-                    <svg viewBox="0 0 32 32" className="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z"/></svg>
-                     </a>
-                     </span>
-                     {/* <span id="divide">|</span><span id="addCharityNav"><a href="/add"> Add Charity</a> </span> */}
-                     </p>
+                        <svg viewBox="0 0 32 32" className="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z" /></svg>
+                    </a>
+                    </span>
+                        {/* <span id="divide">|</span><span id="addCharityNav"><a href="/add"> Add Charity</a> </span> */}
+                    </p>
                 </Jumbotron>
 
                 <Container>
-                        <Row>
-                            <Col size="col-md-12">
-                        <h2 className="addCharityHeader">Please Enter Your Charity Info Below</h2>
-                            </Col>
-                        </Row>
+                    <Row>
+                        <Col size="col-md-12">
+                            <h2 className="addCharityHeader">Please Enter Your Charity Info Below</h2>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col size="col-md-1"></Col>
                         <Col size="col-md-10 formDiv">
@@ -181,11 +196,6 @@ class Charities extends Component {
                         <Col size="col-md-1"></Col>
 
                     </Row>
-                    <div className="container text-center">
-                        <a href="/" className="btn btn-success" role="button">Home</a>
-                        <a href="/results" className="btn btn-primary" role="button">View Results</a>
-
-                    </div>
                 </Container>
             </div>
         )
