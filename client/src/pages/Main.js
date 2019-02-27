@@ -31,7 +31,6 @@ class Main extends Component {
 
 
                 let uniqueCategories = [...new Set(allCategories)];
-                console.log(uniqueCategories);
                 let sortedCategories = uniqueCategories.sort();
                 this.setState({ categories: sortedCategories })
 
@@ -79,7 +78,7 @@ class Main extends Component {
 
         // CHECK IF BUTTON HAS ALREADY BEEN CLICKED, IF NOT PUSH INTO SELECTIONS ARRAY
         if (!(this.state.selections.includes(clicked))) {
-            console.log("not already a selection");
+            // console.log("not already a selection");
             this.state.selections.push(clicked);
             this.setState({ noSelections: false });
         }
@@ -110,7 +109,7 @@ class Main extends Component {
                     <p className="navLinks ">
                         <span id="addCharityNav">
                             <a id="navLink" href="/">
-                                <svg viewBox="0 0 32 32" class="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z" /></svg>
+                                <svg viewBox="0 0 32 32" className="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z" /></svg>
                             </a>
                         </span>
                         <span id="divide">|</span>
@@ -155,7 +154,7 @@ class Main extends Component {
                                                 <div className="chosenButtons">
                                                     <hr id="charityHR"></hr>
                                                     {this.state.selections.map((category) =>
-                                                        <div className="aButton">
+                                                        <div className="aButton" key={category}>
                                                             <p key={category} id={category} className=" pickedCategoryButton">{category}
                                                                 <span className="deleteX" onClick={() => this.removeCategory(category)} >
                                                                     ✘
@@ -186,7 +185,7 @@ class Main extends Component {
                             <hr id="charityHR"></hr>
                             <div className="charityMapResults">
                                 {this.state.queryResponse.map((charity) =>
-                                    <div className="row text-left" >
+                                    <div className="row text-left">
 
 
                                         <Col size="col-md-8">

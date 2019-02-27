@@ -6,10 +6,12 @@ export default {
     },
 
     getCenters: function() {
+        console.log("Api.getCenters function, called upon componentDidMount");
         return axios.get('/api/centers/');
     },
 
     findByCategories: function(categories) {
+        console.log("Api.findByCategories function, called upon user clicking submit");
         return axios.get('/api/centers/categories/' + categories);
     },
 
