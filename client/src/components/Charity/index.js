@@ -11,6 +11,7 @@ function Charity(props) {
     var details;
     var info;
     var doesnotaccept;
+    var pickup;
 
 
 
@@ -41,17 +42,34 @@ function Charity(props) {
         info = "no additional info"
     }
 
-    if (props.data.doesnotaccept) {
+    if ((props.data.doesnotaccept)) {
         console.log(props.data.doesnotaccept);
         console.log("----------------------\n")
+        if (props.data.doesnotaccept.length === 0) {
+            
+                console.log('no doesnotaccept');
+                console.log("\n----------------------\n")
+                doesnotaccept = "no specifications";
+            
+        
+        }
+        else {
+            doesnotaccept = props.data.doesnotaccept.map((category) => category + ", ");
+        }
 
-        doesnotaccept = props.data.doesnotaccept.map((category) => category + ", ")
-            ;
+    }
+
+    if (props.data.pickup){
+        pickup = props.data.pickup;
+        if (pickup){
+            pickup = "We pickup!";
+        }
+        else {
+            pickup = "We do not pickup!";
+        }
     }
     else {
-        console.log('no doesnotaccept');
-        console.log("\n----------------------\n")
-        doesnotaccept = "no specifications";
+        pickup = "no info provided";
     }
 
 
@@ -70,6 +88,7 @@ function Charity(props) {
                     <p>Website: {website}</p>
                     <p>Additional Info: {info}</p>
                     <p>Does Not Accept: {doesnotaccept}</p>
+                    <p>Pickup: {pickup}</p>
                 </div>
 
             </Col>

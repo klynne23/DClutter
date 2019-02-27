@@ -2,25 +2,35 @@
 @import url('https://fonts.googleapis.com/css?family=Staatliches');
 
 .display-1 #D {
+    color: black;
     font-family: "Permanent Marker";
-    font-size:  160px;
+    font-size:  290px;
     text-shadow: 8px 8px 5px #1D3B58;
 }
 
 .display-1 #C {
+    color: black;
     font-family: "Amatic SC";
-    font-size:  150px;
-    text-shadow: 7px 7px 5px #1D3B58;
+    font-size:  300px;
+    text-shadow: 4px 4px 5px rgb(255, 255, 255), -4px 4px 5px rgb(255, 255, 255);
 }
 
 
 .display-1 #lutter {
+    color: black;
+    font-size: 1.9em;
     font-family: "Amatic SC";
-    text-shadow: 7px 7px 5px #1D3B58;
+    text-shadow: 4px 4px 5px rgb(255, 255, 255), -4px -4px 5px rgb(255, 255, 255);
 }
+
+.lead {
+    color: black;
+    text-shadow: 2px 2px 5px rgb(255, 255, 255), 2px -2px 5px rgb(255, 255, 255);
+}
+
 .col-md-12 h2 {
     color: white;
-    text-shadow: 7px 7px 5px #1D3B58;
+    text-shadow: 5px 5px 5px #1D3B58;
     font-size: 4em;
     font-family: "Staatliches";
     text-align: center;
@@ -42,8 +52,11 @@
 .searchSelectionDiv {
     border: 1px solid rgb(216, 216, 216);
     border-radius: 15px;
+    background-color: #ffffff6c;
+
     padding: 2%;
-    background-color: #e4dbd6;
+    /* kirthi color */
+    /* background-color: #e4dbd6; */
     box-shadow: 12px 12px 2px 1px #000000; 
     margin-bottom: 32px;
     
@@ -53,11 +66,15 @@
     border: 1px solid rgb(216, 216, 216);
     border-radius: 15px;
     padding: 2%;
-    background-color: #e4dbd6;
+    background-color: #ffffff6c;
+
+    /* kirthi color */
+    /* background-color: #e4dbd6; */
     box-shadow: 12px 12px 2px 1px #000000; 
     margin-bottom: 32px;
     margin-top: 0px;
 }
+
 
 .chosenCategories button {
     margin: 1%;
@@ -72,7 +89,7 @@
 }
 
 .aButton {
-    /* display: inline; */
+    display: inline;
     margin-bottom: 3%;
 }
 
@@ -110,6 +127,12 @@ h2.searchResultsHeader {
     text-align: center;
 }
 
+.charityMapResults {
+    background-color: rgba(0, 0, 0, 0.726);
+}
+
+
+
 
 svg {
     color: white;
@@ -120,7 +143,7 @@ svg {
     color: white;
     padding: 1%;
 
-    background-color: #120A1E;
+    background-color: rgba(0, 0, 0, 0.411);
     border: 5px solid #210B18;
     border-radius: 49px;
 }
@@ -137,17 +160,21 @@ svg {
 }
 
 
-a {
-    color: rgb(255, 255, 255);
-    text-shadow: 0px 0px 4px white;
+a#navLink{
+    color: white;
     transition: .4s;
-}
-
-a:link {
     text-decoration: none;
+    
 }
 
-a:hover {
+a#navLink:link {
+    text-decoration: none;
+    color: white;
+    
+}
+
+a#navLink:hover {
+    text-shadow: 0px 0px 4px white;
     color: white;
 }
 

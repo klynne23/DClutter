@@ -22,12 +22,26 @@ class Main extends Component {
     getCategories = () => {
         API.getCenters()
             .then(res => {
+                // console.log(res.data);
+
+                // WORKS FINE LOCALLY
                 let allCategories = res.data.reduce(function (acc, element) {
-                    return acc.concat(element.accepts)
+                    return acc.concat(element.accepts);
                 }, []);
+
+
                 let uniqueCategories = [...new Set(allCategories)];
+                console.log(uniqueCategories);
                 let sortedCategories = uniqueCategories.sort();
                 this.setState({ categories: sortedCategories })
+
+
+                // HEROKU HARD CODING
+                // let uniqueCategories = ["pet supplies", "household goods", "calling cards", "gift cards", "baby items", "vehicles", "toiletries", "cleaning supplies", "containers", "office supplies", "bicycles", "bicycle parts", "tools", "sewing machines", "school supplies", "toys", "clothing", "non-perishable food", "furniture", "computer equipment", "musical instruments", "art supplies", "professional services", "warehouse space", "food", "animal feed", "office equipment", "small appliances", "electronics", "large appliances", "antiques", "construction material", "household goods ", "kitchenware", "books"];
+                // let sortedCategories = uniqueCategories.sort();
+                // this.setState({categories: sortedCategories});
+
+
             })
             .catch(err => console.log(err))
     };
@@ -40,6 +54,7 @@ class Main extends Component {
     findByCategories = categories => {
         API.findByCategories(categories)
             .then(res => {
+                console.log(res.data);
                 this.setState({ queryResponse: res.data })
             })
             .catch(err => console.log(err));
@@ -89,17 +104,17 @@ class Main extends Component {
         return (
             <div className="main">
                 <Jumbotron >
-                    <h1 className="display-1" style={{ color: "white" }}><span id="D">D</span><span id="C">C</span><span id="lutter">lutter</span></h1>
-                    <p className="lead" style={{ color: "white" }}>Get rid of things that dont bring you joy and fulfilment</p>
+                    <h1 className="display-1" ><span id="D">D</span><span id="C">C</span><span id="lutter">lutter</span></h1>
+                    {/* <p className="lead" >Get rid of things that dont bring you joy and fulfilment</p> */}
                     <hr id="mainHR"></hr>
                     <p className="navLinks ">
                         <span id="addCharityNav">
-                            <a href="/">
+                            <a id="navLink" href="/">
                                 <svg viewBox="0 0 32 32" class="icon icon-home" viewBox="0 0 32 32" aria-hidden="true"><path d="M27 18.039L16 9.501 5 18.039V14.56l11-8.54 11 8.538v3.481zm-2.75-.31v8.251h-5.5v-5.5h-5.5v5.5h-5.5v-8.25L16 11.543l8.25 6.186z" /></svg>
                             </a>
                         </span>
                         <span id="divide">|</span>
-                        <span id="addCharityNav"><a href="/add"> Add Charity</a> </span></p>
+                        <span id="addCharityNav"><a id="navLink" href="/add"> Add Charity</a> </span></p>
 
                 </Jumbotron>
 
@@ -145,7 +160,7 @@ class Main extends Component {
                                                     )}
                                                 </div> {/* end chosenButtons */}
 
-                                                <button type="button" className="btn btn-outline-info clearButton" onClick={() => this.clearSelections()}>Clear All</button>
+                                                <button type="button" className="btn btn-outline-info clearButton" onClick={() => this.clearSelections()}>Clear</button>
                                                 <button type="button" className="btn btn-outline-success searchButton" onClick={() => this.searchButtonClick()}><span role="img" aria-label="Search">🔍Search</span></button>
 
                                             </div> {/* chosenCategories */}
@@ -162,32 +177,34 @@ class Main extends Component {
                     <div className="resultsContainer">
                         <Container>
                             <h2 className="searchResultsHeader">Your Search Results</h2>
-                            {this.state.queryResponse.map((charity) =>
-                                <div className="row text-left" >
+                            <hr id="charityHR"></hr>
+                            <div className="charityMapResults">
+                                {this.state.queryResponse.map((charity) =>
+                                    <div className="row text-left" >
 
-                                    <Col size="col-md-12">
-                                        <hr id="charityHR"></hr>
-                                    </Col>
-                      
-                                    <Col size="col-md-8">
-                                        <Charity
-                                            data={charity}
-                                        />
-                                    </Col>
-                                    <Col size="col-md-4">
-                                        <Row>
-                                            <MapCom
-                                                zoom={this.state.zoom}
+
+                                        <Col size="col-md-8">
+                                            <Charity
                                                 data={charity}
                                             />
-                                        </Row>
+                                        </Col>
+                                        <Col size="col-md-4">
+                                            <Row>
+                                                <MapCom
+                                                    zoom={this.state.zoom}
+                                                    data={charity}
+                                                />
+                                            </Row>
+
+                                        </Col>
+                                            <Col size="col-md-12">
+                                                <hr id="charityHR"></hr>
+                                            </Col>
+                                    </div>
+                                )}
+                            </div>
 
 
-
-                                    </Col>
-                                </div>
-                            )}
-                            <hr id="charityHR"></hr>
 
                         </Container>
                     </div> {/* end resultsContainer */}

@@ -10,5 +10,9 @@ div[data-reactroot] {
   height: 100%;
   padding: 0;
   margin: 0;
-  background-color: #210B18;
+
+  background-image: url("./components/Jumbotron/assets/map.jpg");
+
+  /* kirthi color */
+  /* background-color: #210B18; */
 }

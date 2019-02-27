@@ -1,3 +1,9 @@
 .jumbotron {
-    background-color: #120A1E;
+
+    /* background-color: rgb(108, 189, 255); */
+    background-image: url("./assets/boxes.jpg");
+    background-size: cover;
+
+    /* kirthi code */
+    /* background-color: #120A1E; */
 }

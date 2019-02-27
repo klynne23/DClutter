@@ -44,9 +44,9 @@ const centerSeed = [{
         phone: "(703) 931-9241",
         accepts: ["household goods", "pet supplies", "office supplies"],
         email: "donate@awla.org",
-        details: `
+        details: `Accepts:
             "HOUSEHOLD GOODS:  Towels, wash cloths, hand towels, pillow cases, Shoeboxes, Plain non-electric blankets (new or in very good shape)
-            PET SUPPLIES: Animal beds(only those small enough to be washed)
+            \nPET SUPPLIES: Animal beds(only those small enough to be washed)
             Stainless steel or ceramic bowls
             Unopened cat or dog food and treats,
             Hard rubber and nylon toys(not chewed)
@@ -62,7 +62,7 @@ const centerSeed = [{
             Cages
             for birds / ferrets and aquariums in good shape
             Hay
-            OFFICE SUPPLIES
+           \n OFFICE SUPPLIES
             Clorox Cleaning Wipes,
             Reams of Colored and White Paper,
             Pens(blue or black),
@@ -129,7 +129,7 @@ const centerSeed = [{
         location: "Willston I Shopping Center, 6172 Arlington Blvd., Falls Church, VA",
         phone: "(703) 532-5355",
         accepts: ["clothing", "household goods", "furniture"],
-        details: "We accept gently-used clothing (boutique and other), household items (glass, ceramics, small appliances) and some furniture (not upholstered), Wednesdays through Sundays.",
+        details: "Accepts: We accept gently-used clothing (boutique and other), household items (glass, ceramics, small appliances) and some furniture (not upholstered), Wednesdays through Sundays.",
         info: "Turn your goods into gold for patient care. Open 10 am - 5 pm Mondays through Saturday, 11- 4 Sunday",
         lat: 38.8723761,
         lng: -77.1555717
@@ -198,7 +198,7 @@ const centerSeed = [{
         accepts: ["clothing", "furniture", "small appliances", "household goods", "computer equipment", "electronics", "toys", "vehicles"],
         doesnotaccept: ["mattresses", "box springs", "sofa beds", "large appliances", "hazardous material", "construction material", "items in poor condition"],
         website: "www.dcgoodwill.org",
-        details: `ACCEPTS: Clothing, furniture, small appliances, house wares, computers (Pentium I and newer), electronics and toys. Visit www.dcgoodwill.org for a more complete list of accepted items and drop off locations/time.
+        details: `Accepts: Clothing, furniture, small appliances, house wares, computers (Pentium I and newer), electronics and toys. Visit www.dcgoodwill.org for a more complete list of accepted items and drop off locations/time.
             Cars(202) 715 - 2636. Vehicles must be in running and drivable condition.Visit www.GWCars.org
             for more information.
             NO: Mattresses or box - springs,
@@ -217,7 +217,7 @@ const centerSeed = [{
         location: "4451 First Place South, Arlington, VA",
         phone: "(703) 521-9890",
         accepts: ["vehicles", "food", "tools", "professional services"],
-        details: "Cars, Lunch Donations for Volunteers, Power tools, Printing Services",
+        details: "Accepts: Cars, Lunch Donations for Volunteers, Power tools, Printing Services",
         lat: 38.867602,
         lng: -77.108936
     },
@@ -226,7 +226,7 @@ const centerSeed = [{
         location: "1029 E Gude Dr., Rockville, MD 20850",
         phone: "(301) 947-3304",
         accepts: ["small appliances", "large appliances", "furniture", "antiques", "construction material"],
-        details: "Home improvement items including: Appliances, Furniture, Antiques, Doors, Windows, Tile and Lighting Fixtures.",
+        details: "Accepts: Home improvement items including: Appliances, Furniture, Antiques, Doors, Windows, Tile and Lighting Fixtures.",
         lat: 39.0998321,
         lng: -77.139713
     },
@@ -235,7 +235,7 @@ const centerSeed = [{
         location: "8380 Colesville Rd., Silver Spring, MD 20910",
         phone: "(301) 990-0014",
         accepts: ["small appliances", "large appliances", "furniture", "antiques", "construction material"],
-        details: "Home improvement items including: Appliances, Furniture, Antiques, Doors, Windows, Tile and Lighting Fixtures.",
+        details: "Accepts: Home improvement items including: Appliances, Furniture, Antiques, Doors, Windows, Tile and Lighting Fixtures.",
         lat: 38.9961294,
         lng: -77.0281441
     },
@@ -244,7 +244,7 @@ const centerSeed = [{
         location: "869 South Pickett Street, Alexandria, VA 22304",
         phone: "(703) 360-6700",
         accepts: ["small appliances", "large appliances", "furniture", "antiques", "construction material"],
-        details: "Home improvement items including: Appliances, Furniture, Antiques, Doors, Windows, Tile and Lighting Fixtures.",
+        details: "Accepts: Home improvement items including: Appliances, Furniture, Antiques, Doors, Windows, Tile and Lighting Fixtures.",
         lat: 38.8033651,
         lng: -77.1401894
     },
@@ -253,7 +253,7 @@ const centerSeed = [{
         location: "4311 Walney Road, Chantilly, VA 20151",
         phone: "(703) 953-3747",
         accepts: ["small appliances", "large appliances", "furniture", "antiques", "construction material"],
-        details: "Home improvement items including: Appliances, Furniture, Antiques, Doors, Windows, Tile and Lighting Fixtures.",
+        details: "Accepts: Home improvement items including: Appliances, Furniture, Antiques, Doors, Windows, Tile and Lighting Fixtures.",
         lat: 38.8863683,
         lng: -77.4347947
     },
@@ -263,7 +263,7 @@ const centerSeed = [{
         phone: "(301) 770-8329",
         website: "hebrew-home.org",
         accepts: ["vehicles"],
-        details: "Accepts: Cars, trucks and other vehicles. Call to schedule pick-up.",
+        details: "Accepts: Accepts: Cars, trucks and other vehicles. Call to schedule pick-up.",
         lat: 39.05445,
         lng: -77.14373
     },
@@ -304,7 +304,7 @@ const centerSeed = [{
         location: "751 Twinbrook Pkwy #8, Rockville, MD 20851",
         accepts: ["kitchenware", "household goods", "toiletries", "books", "electronics", "toys"],
         website: "www.iworksmc.org",
-        details: "Glassware, Clothing, Household Items, Toiletries, Books, CDs, Electronics, and Toys.",
+        details: "Accepts: Glassware, Clothing, Household Items, Toiletries, Books, CDs, Electronics, and Toys.",
         info: "Please note that items can be dropped off at Interfaith Works Clothing Center on Monday and Friday between 9:00am - 7:00pm. Tuesday through Thursday items may be dropped of between 9:00am - 5:00pm.",
         pickup: false,
         lat: 39.0813946,
@@ -353,7 +353,7 @@ const centerSeed = [{
         phone: "(202) 667-8970",
         accepts: ["clothing"],
         email: "jstewart@jubileejobs.org",
-        details: "Donate used and new interview clothing. For men, we accept dress shirts, ties, slacks, business suits and casual dress shoes. For women, we accept blouses, dark-colored skirts, professional dresses, and casual dress shoes.",
+        details: "Accepts: Donate used and new interview clothing. \nFor men, we accept dress shirts, ties, slacks, business suits and casual dress shoes. \nFor women, we accept blouses, dark-colored skirts, professional dresses, and casual dress shoes.",
         info: "Donated items may be dropped off at our Washington, DC, office. To schedule a donation drop off, please contact Jacqueline Stewart, Jubilee Jobs Associate Director on (202) 667-8970 or jstewart@jubileejobs.org.",
         pickup: false,
         lat: 38.9246099,
