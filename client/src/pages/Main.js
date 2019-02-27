@@ -22,7 +22,7 @@ class Main extends Component {
     getCategories = () => {
         API.getCenters()
             .then(res => {
-                // console.log(res.data);
+                console.log(res.data);
 
                 // WORKS FINE LOCALLY
                 let allCategories = res.data.reduce(function (acc, element) {
