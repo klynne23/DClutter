@@ -2,7 +2,7 @@
 
 ![DClutter: Get rid of things that don't bring you joy and fulfillment](./dclutter.png)
 
-This web application allows a user to enter the item or items they would like to donate. The application then provides a list of donation sites, the items they accept, the location, and a map of the location. It also allows the user to add other donation sites.
+This web application allows a user to select from a list of items for the things they would like to donate. The application then provides a list of donation sites, the items they accept, the location, and a map of the location. It also allows the user to add other donation sites.
 
 The project features a MERN stack, with integration of [Leaflet](https://www.npmjs.com/package/leaflet) for rendering maps and a [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start) by Google  to feed Leaflet the latitude and longitude of physical addresses.
 
