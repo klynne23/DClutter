@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker|Questrial');
 @import url('https://fonts.googleapis.com/css?family=Staatliches');
+@import url('https://fonts.googleapis.com/css?family=Mr+Dafoe|Petit+Formal+Script|Rochester');
+
 
 .display-1 #D {
     color: black;
@@ -37,6 +39,19 @@
 
 }
 
+.topQuote {
+    color: white;
+    font-size: 3.4em;
+    font-family: "Rochester";
+    text-shadow: 1px 1px 4px black;
+}
+
+.bottomQuote {
+    text-align: right;
+    font-size: 3.4em;
+    font-family: "Rochester";
+
+}
 
 .searchButton {
     margin-bottom: 2%;
@@ -51,8 +66,8 @@
 
 .searchSelectionDiv {
     border: 1px solid rgb(216, 216, 216);
-    border-radius: 15px;
-    background-color: #ffffff6c;
+    /* border-radius: 15px; */
+    background-color: #ffffffc2;
 
     padding: 2%;
     /* kirthi color */
@@ -64,7 +79,7 @@
 
 .chosenCategories {
     border: 1px solid rgb(216, 216, 216);
-    border-radius: 15px;
+    /* border-radius: 15px; */
     padding: 2%;
     background-color: #ffffff6c;
 

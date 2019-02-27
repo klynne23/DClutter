@@ -121,11 +121,17 @@ class Main extends Component {
                 <div className="searchContainer">
                     <Container>
                         <Row>
+                            <Col size="col-md-12">
+                            <p className="topQuote">"Get rid of things that dont bring you joy and fulfilment"</p>
+                            <p className="bottomQuote"> - Marie Kondo</p>
+                            </Col>
+                        </Row>
+                        <Row>
                             <Col size="col-md-9">
                                 <Container>
                                     <Row>
                                         <Col size="col-md-12">
-                                            <h2 id="categorySelect">SELECT CATEGORIES</h2>
+                                            <h2 id="categorySelect">Lets give away some...</h2>
                                             <div className="searchSelectionDiv">
 
                                                 <div className="categoryButtons">
@@ -142,7 +148,7 @@ class Main extends Component {
                                 <Container>
                                     <Row>
                                         <Col size="col-md-12 ">
-                                            <h2 id="categorySelected">SELECTIONS</h2>
+                                            <h2 id="categorySelected">Chosen</h2>
 
                                             <div className="chosenCategories">
 
@@ -176,7 +182,7 @@ class Main extends Component {
 
                     <div className="resultsContainer">
                         <Container>
-                            <h2 className="searchResultsHeader">Your Search Results</h2>
+                            <h2 className="searchResultsHeader">Results</h2>
                             <hr id="charityHR"></hr>
                             <div className="charityMapResults">
                                 {this.state.queryResponse.map((charity) =>
